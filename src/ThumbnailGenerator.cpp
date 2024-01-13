@@ -50,10 +50,6 @@ std::string ThumbnailGenerator::generate_thumbnail(std::string input_file_path,
                                 nullptr);
   if (ret < 0) {
     std::cerr << "Could not open input file: " << input_file_path << std::endl;
-    // char buff[256];
-    // av_strerror(ret, buff, 256);
-    // printf(buff);
-
     std::cerr << "Error: " << ret << std::endl;
     AVERROR(ret);
 
