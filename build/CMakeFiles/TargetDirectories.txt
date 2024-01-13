@@ -1,0 +1,3 @@
+/home/talksik/code/cpp_thumbnail_generator/build/CMakeFiles/ThumbnailGenerator.dir
+/home/talksik/code/cpp_thumbnail_generator/build/CMakeFiles/edit_cache.dir
+/home/talksik/code/cpp_thumbnail_generator/build/CMakeFiles/rebuild_cache.dir

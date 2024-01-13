@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/talksik/code/cpp_thumbnail_generator/build",
+  "command": "/usr/bin/c++  -I/home/talksik/code/cpp_thumbnail_generator/./src -g -std=gnu++14 -o CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o -c /home/talksik/code/cpp_thumbnail_generator/src/Main.cpp",
+  "file": "/home/talksik/code/cpp_thumbnail_generator/src/Main.cpp"
+}
+]

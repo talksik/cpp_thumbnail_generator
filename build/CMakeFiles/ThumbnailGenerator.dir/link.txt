@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o -o ThumbnailGenerator 
