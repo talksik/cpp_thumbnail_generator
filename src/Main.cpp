@@ -25,7 +25,10 @@ int main(int argc, char *argv[]) {
   std::unique_ptr<ThumbnailGenerator> thumbnailGenerator =
       std::make_unique<ThumbnailGenerator>();
 
-  thumbnailGenerator->readVideoFrames(input_file_path);
+  int duration = thumbnailGenerator->get_duration(input_file_path);
+  std::cout << "duration: " << duration << std::endl;
+
+  // thumbnailGenerator->read_video_frames(input_file_path);
 
   return 0;
 }

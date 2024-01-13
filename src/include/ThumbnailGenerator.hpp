@@ -5,9 +5,11 @@ class ThumbnailGenerator {
 public:
   ThumbnailGenerator();
   // given a path to a video file, generate a thumbnail
-  std::string generateThumbnail(std::string path);
+  std::string generate_thumbnail(std::string path);
 
   // reads and simply prints out information about the video frames
-  void readVideoFrames(std::string path);
+  void read_video_frames(std::string path);
+
+  int get_duration_microseconds(std::string path);
 private:
 };

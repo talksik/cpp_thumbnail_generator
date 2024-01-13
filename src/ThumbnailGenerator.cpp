@@ -11,12 +11,36 @@ extern "C" {
 
 ThumbnailGenerator::ThumbnailGenerator() { av_register_all(); }
 
-std::string ThumbnailGenerator::generateThumbnail(std::string path) {
+int ThumbnailGenerator::get_duration_microseconds(std::string input_file_path) {
+  // Open input file and allocate format context
+  AVFormatContext *format_ctx = nullptr;
+  int ret = avformat_open_input(&format_ctx, input_file_path.c_str(), nullptr,
+                                nullptr);
+  if (ret < 0) {
+    std::cerr << "Could not open input file: " << input_file_path << std::endl;
+    // char buff[256];
+    // av_strerror(ret, buff, 256);
+    // printf(buff);
+
+    std::cerr << "Error: " << ret << std::endl;
+    AVERROR(ret);
+
+    throw std::runtime_error("Could not open input file");
+  }
+
+  int duration = format_ctx->duration;
+
+  avformat_close_input(&format_ctx);
+
+  return duration;
+}
+
+std::string ThumbnailGenerator::generate_thumbnail(std::string path) {
   std::cout << "generateThumbnail: " << path << std::endl;
   return "generateThumbnail: " + path;
 }
 
-void ThumbnailGenerator::readVideoFrames(std::string input_file_path) {
+void ThumbnailGenerator::read_video_frames(std::string input_file_path) {
   std::cout << "readVideoFrames: " << input_file_path << std::endl;
 
   // Open input file and allocate format context
