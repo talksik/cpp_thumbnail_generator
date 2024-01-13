@@ -1,7 +1,10 @@
 #include "include/ThumbnailGenerator.hpp"
+#include <bits/types/FILE.h>
 #include <iostream>
 #include <libavutil/pixdesc.h>
 #include <libavutil/pixfmt.h>
+#include <opencv4/opencv2/opencv.hpp>
+
 extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
@@ -37,7 +40,8 @@ int ThumbnailGenerator::get_duration_microseconds(std::string input_file_path) {
   return duration;
 }
 
-std::string ThumbnailGenerator::generate_thumbnail(std::string input_file_path) {
+std::string ThumbnailGenerator::generate_thumbnail(std::string input_file_path,
+                                                   int frame_number) {
   std::cout << "generating thumbnail: " << input_file_path << std::endl;
 
   // Open input file and allocate format context
@@ -95,6 +99,7 @@ std::string ThumbnailGenerator::generate_thumbnail(std::string input_file_path) 
 
   // Read frames from the video stream
   while (av_read_frame(format_ctx, &packet) >= 0) {
+
     if (packet.stream_index == video_stream_idx) {
       // Decode video frame
       int ret = avcodec_send_packet(codec_ctx, &packet);
@@ -106,6 +111,14 @@ std::string ThumbnailGenerator::generate_thumbnail(std::string input_file_path) 
       while (ret >= 0) {
         ret = avcodec_receive_frame(codec_ctx, frame);
 
+        if (codec_ctx->frame_number != frame_number) {
+          std::cout << "skipping frame: " << codec_ctx->frame_number
+                    << std::endl;
+          break;
+        } else {
+          std::cout << "found frame: " << codec_ctx->frame_number << std::endl;
+        }
+
         if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF) {
           break;
         } else if (ret < 0) {
@@ -113,10 +126,33 @@ std::string ThumbnailGenerator::generate_thumbnail(std::string input_file_path) 
           break;
         }
 
-        std::cout << "return value: " << ret << std::endl;
         std::cout << "frame->format: " << frame->format << std::endl;
         std::cout << frame->width << "x" << frame->height << std::endl;
         std::cout << frame->linesize[0] << std::endl;
+
+        // cv::Mat convertedMat(frame->height, frame->width, CV_8UC3,
+        //                      frame->data[0], frame->linesize[0]);
+        //
+        // std::cout << "convertedMat: " << convertedMat.cols << "x"
+        //           << convertedMat.rows << std::endl;
+
+        int width = frame->width;
+        int height = frame->height;
+        cv::Mat image(height, width, CV_8UC3);
+        int cvLinesizes[1];
+        cvLinesizes[0] = image.step1();
+        SwsContext *conversion =
+            sws_getContext(width, height, (AVPixelFormat)frame->format, width,
+                           height, AVPixelFormat::AV_PIX_FMT_BGR24,
+                           SWS_FAST_BILINEAR, NULL, NULL, NULL);
+        sws_scale(conversion, frame->data, frame->linesize, 0, height,
+                  &image.data, cvLinesizes);
+        sws_freeContext(conversion);
+
+        cv::imshow("Frame", image);
+        cv::waitKey(25);
+
+        cv::imwrite("output.jpg", image);
 
         // Print basic frame properties
         std::cout << "Frame " << codec_ctx->frame_number
@@ -124,6 +160,8 @@ std::string ThumbnailGenerator::generate_thumbnail(std::string input_file_path) 
                   << ", size=" << frame->pkt_size << " bytes) pts "
                   << frame->pts << " key_frame " << frame->key_frame
                   << std::endl;
+
+        return "generateThumbnail: " + input_file_path;
       }
     }
 

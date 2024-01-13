@@ -12,6 +12,10 @@ pkg_check_modules(LIBAV REQUIRED IMPORTED_TARGET
    libswscale
    libavutil
 )
+# open cv
+pkg_check_modules(OPENCV REQUIRED IMPORTED_TARGET
+   opencv4
+)
 
 # compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -26,4 +30,5 @@ add_executable(ThumbnailGenerator ${source_files})
 file (GLOB header_files "${source_dir}/*.hpp")
 target_include_directories(ThumbnailGenerator PUBLIC ${source_dir})
 
+target_link_libraries(ThumbnailGenerator PkgConfig::OPENCV)
 target_link_libraries(ThumbnailGenerator PkgConfig::LIBAV)
