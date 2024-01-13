@@ -1,9 +1,3 @@
-# Demo
-
-https://github.com/talksik/cpp_thumbnail_generator/assets/19339529/1adfb8be-8b0b-4277-8bb5-4f7be17c2ae3
-
-
-
 # Getting started
 
 ### Install pre-requisites
