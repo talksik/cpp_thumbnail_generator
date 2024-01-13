@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/talksik/code/cpp_thumbnail_generator/src/Main.cpp" "CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o" "gcc" "CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o.d"
+  "/home/talksik/code/cpp_thumbnail_generator/src/ThumbnailGenerator.cpp" "CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.o" "gcc" "CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.o.d"
   )
 
 # Targets to which this target links.

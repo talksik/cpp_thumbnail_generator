@@ -153,6 +153,30 @@ src/Main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThumbnailGenerator.dir/build.make CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.s
 .PHONY : src/Main.cpp.s
 
+src/ThumbnailGenerator.o: src/ThumbnailGenerator.cpp.o
+.PHONY : src/ThumbnailGenerator.o
+
+# target to build an object file
+src/ThumbnailGenerator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThumbnailGenerator.dir/build.make CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.o
+.PHONY : src/ThumbnailGenerator.cpp.o
+
+src/ThumbnailGenerator.i: src/ThumbnailGenerator.cpp.i
+.PHONY : src/ThumbnailGenerator.i
+
+# target to preprocess a source file
+src/ThumbnailGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThumbnailGenerator.dir/build.make CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.i
+.PHONY : src/ThumbnailGenerator.cpp.i
+
+src/ThumbnailGenerator.s: src/ThumbnailGenerator.cpp.s
+.PHONY : src/ThumbnailGenerator.s
+
+# target to generate assembly for a file
+src/ThumbnailGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThumbnailGenerator.dir/build.make CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.s
+.PHONY : src/ThumbnailGenerator.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
+	@echo "... src/ThumbnailGenerator.o"
+	@echo "... src/ThumbnailGenerator.i"
+	@echo "... src/ThumbnailGenerator.s"
 .PHONY : help
 
 

@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o"
   "CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o.d"
+  "CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.o"
+  "CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.o.d"
   "ThumbnailGenerator"
   "ThumbnailGenerator.pdb"
 )

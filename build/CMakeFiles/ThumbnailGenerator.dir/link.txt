@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o -o ThumbnailGenerator 
+/usr/bin/c++ -g CMakeFiles/ThumbnailGenerator.dir/src/Main.cpp.o CMakeFiles/ThumbnailGenerator.dir/src/ThumbnailGenerator.cpp.o -o ThumbnailGenerator  /usr/lib/x86_64-linux-gnu/libavdevice.so /usr/lib/x86_64-linux-gnu/libavfilter.so /usr/lib/x86_64-linux-gnu/libavformat.so /usr/lib/x86_64-linux-gnu/libavcodec.so /usr/lib/x86_64-linux-gnu/libswresample.so /usr/lib/x86_64-linux-gnu/libswscale.so /usr/lib/x86_64-linux-gnu/libavutil.so 

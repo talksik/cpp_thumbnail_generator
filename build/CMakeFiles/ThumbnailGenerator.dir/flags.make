@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/talksik/code/cpp_thumbnail_generator/./src
 
-CXX_FLAGS = -g -std=gnu++14
+CXX_FLAGS = -g
 

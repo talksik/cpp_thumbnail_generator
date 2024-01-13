@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eo pipefail
 
 rm -rf build/
 mkdir -p build/
@@ -11,4 +13,8 @@ make
 
 cp ./compile_commands.json ../
 
-./ThumbnailGenerator
+cp ./ThumbnailGenerator ../
+
+cd ..
+
+./ThumbnailGenerator sample.mp4
